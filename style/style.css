@@ -11,13 +11,13 @@ div.left_text p, h2{
     color: white;
 }
 
-div.textBlock{
+div.textOrVisBlock{
   height: 100vh;
   display: table;
   padding: 0 1.5vw;
 }
 
-div.textBlock .textBlock_verticalAlign{
+div.textOrVisBlock .block_verticalAlign{
   vertical-align: middle;
   display: table-cell;
 }
