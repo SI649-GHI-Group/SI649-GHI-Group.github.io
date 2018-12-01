@@ -1,8 +1,10 @@
-
+body{
+  margin:0;
+}
 
 div.left_text{
     display: inline-block;
-    width: 33%;
+    width: 20%;
     height: 100%;
     background: black;
 }
@@ -17,6 +19,8 @@ div.textOrVisBlock{
   padding: 0 1.5vw;
 }
 
+
+
 div.textOrVisBlock .block_verticalAlign{
   vertical-align: middle;
   display: table-cell;
@@ -29,7 +33,23 @@ div.textOrVisBlock .block_verticalAlign{
 div.right_changingCharts{
     display: inline-block;
     position: fixed;
-    width: 66%;
+    width: 79%;
     height: 100vh;
-    background: lightgrey;
+    background: none;
+}
+
+div.visBlock{
+  position: absolute;
+  top: 100vh;
+  left: 2vw;
+}
+
+div.visBlock .dynamicBlock{
+  /* position: relative; */
+}
+
+
+
+.right_changingCharts img{
+  width: 70vw;
 }
