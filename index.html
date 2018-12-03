@@ -2,16 +2,25 @@
 <html lang="en">
 <head>
 
-		<script src="script/jquery.min.js"></script>
-	  <script src="script/d3.min.js"></script>
+	<script src="script/jquery.min.js"></script>
+    <!-- <script src="script/d3.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="//d3js.org/d3.v4.min.js"></script>
 
 
-		<meta charset="utf-8">
-		<title>GHI</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
 
-		<link rel="stylesheet" type="text/css" href="style/style.css">
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+	<meta charset="utf-8">
+	<title>GHI</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
 ·
 
@@ -104,36 +113,65 @@
 
 
     <div class="right_changingCharts">
-        <div class="textOrVisBlock visBlock" id="vis_0_pieChart" style="top: 0">
-            <div class="block_verticalAlign">
-                <!-- <svg></svg> -->
-                <img src="assets/test_img/0.png" alt="test_text0">
+        <!-- MOVING PIE Chart -->
+            <div class="textOrVisBlock visBlock" id="vis_0_pieChart" style="top: 0">
+                <div class="block_verticalAlign">
+                    <!-- <svg></svg> -->
+                    <img src="assets/test_img/0.png" alt="test_text0">
+                </div>
             </div>
-        </div>
 
-        <div class="textOrVisBlock visBlock" id="vis_2_GHIIntro">
-            <div class="block_verticalAlign">
-                <!-- <svg></svg> -->
-                <img src="assets/test_img/2.jpg" alt="test_text2">
+        <!-- GHIIntro Chart -->
+            <div class="textOrVisBlock visBlock" id="vis_2_GHIIntro">
+                <div class="block_verticalAlign">
+                    <!-- <svg></svg> -->
+                    <img src="assets/test_img/2.jpg" alt="test_text2">
+                </div>
             </div>
-        </div>
 
-        <div class="textOrVisBlock visBlock" id="vis_3_GHIMap">
-            <div class="block_verticalAlign">
-                <!-- <svg></svg> -->
-                <img src="assets/test_img/3.jpg" alt="test_text3">
+        <!-- MAP -->
+            <div class="textOrVisBlock visBlock" id="vis_3_GHIMap">
+                <div class="block_verticalAlign">
+                    <!-- <img src="assets/test_img/3.jpg" alt="test_text3"> -->
+
+                    <!-- Mark's code START-->
+                        <div>
+                          <!-- <p class="text-black-100">SELECT A YEAR </p> -->
+                          <div class="select align-items-center justify-content-center">
+                            <select   name="slct" id="mydropdown"  onchange="getValue()">
+                              <option value="1992" >1992</option>
+                              <option value="2000" >2000</option>
+                              <option value="2008" >2008</option>
+                              <option value="2016" >2016</option>
+                              <option value="2017" >2017</option>
+                              <option value="2018" >2018</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <section id="about" class="col-lg-12 mx-auto">
+                          <div id="map"></div>
+                        </section>
+
+                        <div id="tooltip">
+                            Country: <span id="country" class="info"></span><br>
+                            GHI: <span id="ghi" class="info"></span><br>
+                        </div>
+                    <!-- Mark's code END -->
+                </div>
             </div>
-        </div>
 
-        <div class="textOrVisBlock visBlock" id="vis_4_RadarChart"  >
-                <!-- <svg></svg> -->
-                <img src="assets/test_img/4.jpg" alt="test_text4" style="height: 35vh;">
-        </div>
-        
-        <div class="textOrVisBlock visBlock" id="vis_5_BarLineChart" >
-                <!-- <svg></svg> -->
-                <img src="assets/test_img/5.jpg" alt="test_text5" style="height: 60vh;">
-        </div>
+        <!-- RADAR Chart -->
+            <div class="textOrVisBlock visBlock" id="vis_4_RadarChart"  >
+                    <!-- <svg></svg> -->
+                    <img src="assets/test_img/4.jpg" alt="test_text4" style="height: 35vh;">
+            </div>
+
+        <!-- BAR-LINE Chart -->
+            <div class="textOrVisBlock visBlock" id="vis_5_BarLineChart" >
+                    <!-- <svg></svg> -->
+                    <img src="assets/test_img/5.jpg" alt="test_text5" style="height: 60vh;">
+            </div>
 
     </div>
 
@@ -143,5 +181,7 @@
 
 
     <script src="script/script.js"></script>
+    <script type="text/javascript" src="script/drawMap.js"></script>
+
 </body>
 </html>

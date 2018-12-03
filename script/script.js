@@ -96,8 +96,8 @@ $(window).scroll(function(){
 
     //based on the stage, actions happens
     if (currentStage != earlierStage){
-        console.log(currentStage);
-        console.log(earlierStage);
+        // console.log(currentStage);
+        // console.log(earlierStage);
         stageToAction(currentStage, earlierStage);
     }
 
