@@ -29,9 +29,35 @@ var svg = d3.select("#bar-and-line-chart")
             .attr('transform', "translate(" + margin.left + "," + margin.top + ")")
 
 
-// $(document).ready(function () {
-//     loadLineBarData();
-// });
+$(document).ready(function () {
+    //150 countries
+        d3.csv(`assets/data/Undernourishment.csv`, function(d) {
+            buildFinalFilter(d);
+        })
+
+    //169 countries
+        // d3.csv(`assets/data/Underweight.csv`, function(d) {
+        //     buildFinalFilter(d);
+        // })
+        // d3.csv(`assets/data/Stunting.csv`, function(d) {
+        //     buildFinalFilter(d);
+        // })
+        // d3.csv(`assets/data/Wasting.csv`, function(d) {
+        //     buildFinalFilter(d);
+        // })
+
+    //204 countries
+        // d3.csv(`assets/data/Mortality.csv`, function(d) {
+        //     buildFinalFilter(d);
+        // })
+
+    //264 countries
+        // d3.csv(`assets/data/GDP.csv`, function(d) {
+        //     buildFinalFilter(d);
+        // })
+});
+
+
 
 function linearRegression(x, y)
 {
@@ -61,18 +87,22 @@ function linearRegression(x, y)
 
 const simulateBarLineData=(data)=>{
 	let keys=Object.keys(data[0])
-	let countyName=[]
+	let countryName=[]
+
 
 	data.forEach((i)=>{
 		// if(i.Regin == 'SSAfrican' || i.Regin == 'SAsia'){
-			if (!countyName.includes(i.Entity)){
-				countyName.push(i.Entity)
+			if (!countryName.includes(i.Entity)){
+				countryName.push(i.Entity)
 			}
 		// }
 	})
     // console.log(data)
+
+
+
 	let simulatedAddon=[]
-	countyName.forEach((cty)=>{
+	countryName.forEach((cty)=>{
 		let singleCountry=data.filter((item)=>{
 
 			return item.Entity===cty
@@ -87,6 +117,8 @@ const simulateBarLineData=(data)=>{
 		let yearIncludedData=yearsIncluded.map((yr)=>{
 			return singleCountry.filter((d)=>{return d.Year===yr})[0][keys[3]]
 		})
+
+
 		let linearRegressionR=linearRegression(yearsIncluded,yearIncludedData)
 		for (let y=1991;y<=2017;y++){
 			if(!yearsIncluded.includes(y)){
@@ -103,6 +135,7 @@ const simulateBarLineData=(data)=>{
 		}
 		simulatedAddon.push(...singleCountry)
 	})
+
 	return simulatedAddon
 }
 
@@ -329,6 +362,36 @@ const drawYearLine = (year) =>{
         .style('stroke', '#7F7F7F')
         .style('stroke-width', 1)
         .style('stroke-dasharray','3 2')
+}
+
+const buildFinalFilter= (data) => {
+    var finalDropdown = document.querySelector("#myFinaldropdown");
+
+    let countryName=[];
+
+	data.forEach((i)=>{
+		if (!countryName.includes(i.Entity)){
+			countryName.push(i.Entity)
+		}
+	})
+
+    countryName.forEach((cty) => {
+        let countryOption = document.createElement("OPTION");
+        countryOption.innerHTML = cty;
+        countryOption.setAttribute("value", cty);
+
+        if(cty === GLOBAL_COUNTRY){
+            countryOption.setAttribute("selected", "selected")
+        }
+
+        finalDropdown.appendChild(countryOption);
+    })
+
+    finalDropdown.addEventListener("change", function() {
+        let selectedCountryName = $(this).val();
+        loadLineBarData(YEAR, selectedCountryName);
+    })
+
 }
 
 const addFilterControl=()=>{

@@ -16,7 +16,9 @@ var currentVisId = visIds[0],
     earlierStage = 0;
 
 var GLOBAL_COUNTRY = 'Djibouti';
+var YEAR = 1992;
 // var GLOBAL_COUNTRY = 'China';
+
 
 
 

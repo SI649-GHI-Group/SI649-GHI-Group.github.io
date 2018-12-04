@@ -7,13 +7,16 @@ $(document).ready(function() {
   loadRadarData(1992);
   loadLineBarData(1992);
 
-  $("SELECT").change( function () {
+  $("#mapdropdown").change( function () {
                 selectedYear = $(this).val();
                 console.log(selectedYear);
                 findDataItem(loadedMapData, selectedYear)
                 visulizeMap(filteredItem);
 
                 loadRadarData(parseInt(selectedYear));
+                drawYearLine(parseInt(selectedYear));
+
+                YEAR = selectedYear;
 
   });
 
