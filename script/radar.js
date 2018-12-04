@@ -49,7 +49,7 @@ const RadarChart = function RadarChart(parent_selector, data, options) {
 	 opacityArea: 0.35, 	//The opacity of the area of the blob
 	 dotRadius: 4, 			//The size of the colored circles of each blog
 	 opacityCircles: 0.1, 	//The opacity of the circles of each blob
-	 strokeWidth: 2, 		//The width of the stroke around each blob
+	 strokeWidth: 1, 		//The width of the stroke around each blob
 	 roundStrokes: false,	//If true the area and stroke will follow a round path (cardinal-closed)
 	 color: d3.scaleOrdinal(d3.schemeCategory10),	//Color function,
 	 format: '.2%',
@@ -266,9 +266,9 @@ const RadarChart = function RadarChart(parent_selector, data, options) {
 		.style("fill",
 			(d)=>{
 			if(d.predict){
-				return "#FF3333"
+				return "rgba(255, 217, 28, 0.4)" // fake
 			}else{
-				return "#660000"
+				return "#E8540C"
 			}
 		}
 		)
@@ -317,17 +317,8 @@ const RadarChart = function RadarChart(parent_selector, data, options) {
 			.attr("height", 100)
 			.attr("width", 200)
 			.attr('transform', `translate(${cfg.legend.translateX},${cfg.legend.translateY + 20})`);
-		// // Create rectangles markers
-		// legend.selectAll('rect')
-		//   .data(names)
-		//   .enter()
-		//   .append("rect")
-		//   .attr("x", -cfg.w/2)
-		//   .attr("y", (d,i) => i * 20)
-		//   .attr("width", 10)
-		//   .attr("height", 10)
-		//   .style("fill", (d,i) => cfg.color(i));
-		// Create labels
+
+		// Create title
 		legend.selectAll('text')
 		  .data(names)
 		  .enter()
@@ -339,6 +330,56 @@ const RadarChart = function RadarChart(parent_selector, data, options) {
 		  .attr("font-size", "10px")
 		  // .attr("fill", "#737373")
 		  .text(d => d);
+
+
+		// Create rectangles markers for datas
+			legend.selectAll('.dataLegendRect')
+			  .data(names)
+			  .enter()
+			  .append("rect")
+				.attr('class', 'dataLegendRect')
+			  .attr("x", -10)
+			  .attr("y", cfg.h-34)
+			  .attr("width", 5)
+			  .attr("height", 5)
+			  .style("fill", "#E7540D");
+				// Create Label for datas
+					legend.selectAll('.dataLegendText')
+					  .data(names)
+					  .enter()
+					  .append("text")
+						.attr('class', 'dataLegendText')
+					  .attr("x", 0)
+						.attr("y", cfg.h-30)
+					  .attr("font-size", "6px")
+					  .text("real data");
+		// Create rectangles markers for predicted datas
+			legend.selectAll('.predictedDataLegendRect')
+			  .data(names)
+			  .enter()
+			  .append("rect")
+				.attr('class', 'predictedDataLegendRect')
+			  .attr("x", cfg.w/2 - 30)
+			  .attr("y", cfg.h-34)
+			  .attr("width", 5)
+			  .attr("height", 5)
+			  .style("fill", "#FCA12D");
+				// Create Label for predicted datas
+					legend.selectAll('.predictedDataLegendText')
+					  .data(names)
+					  .enter()
+					  .append("text")
+						.attr('class', 'predictedDataLegendText')
+					  .attr("x", cfg.w/2 -20)
+						.attr("y", cfg.h-30)
+					  .attr("font-size", "6px")
+					  .text("predicted data");
+
+
+
+
+
+
 	}
 	return svg;
 }
