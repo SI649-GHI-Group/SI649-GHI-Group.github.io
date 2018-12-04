@@ -4,7 +4,7 @@ body{
 
 div.left_text{
     display: inline-block;
-    width: 10%;
+    width: 15%;
     height: 100%;
     background: black;
     font-weight: lighter;
@@ -13,12 +13,14 @@ div.left_text{
 
 div.left_text h2{
   color: orange;
-  font-size: 0.8em;
+  font-size: 1em;
+  font-weight: bold;
 }
 
 div.left_text p{
-  color: orange;
-  font-size: 0.5em;
+  color: #FFF9FF;
+  font-size: 0.7em;
+  font-weight: lighter;
 }
 
 div.textOrVisBlock{
@@ -41,7 +43,7 @@ div.textOrVisBlock .block_verticalAlign{
 div.right_changingCharts{
     display: inline-block;
     position: fixed;
-    width: 89%;
+    width: 84%;
     height: 100vh;
     background: none;
 }
@@ -89,10 +91,10 @@ div.visBlock .dynamicBlock{
       text-align: left;
       padding: 12px;
       background-color: black;
-      border: 1px solid white;
+      border: 1px solid #FFF9FF;
       width: auto;
       opacity: 0;
-      color: white;
+      color: #FFF9FF;
       position: absolute;
       border-radius: 10px;
       font-weight: lighter;
@@ -240,13 +242,14 @@ div.visBlock .dynamicBlock{
      height: 21px;
      border: none;
      font-size: 10px;
-     color: white;
+     color: #FFF9FF;
      text-align: center;
      text-decoration: none;
      margin: 4px 2px;
      cursor: pointer;
      outline: none;
-     border-radius:3px
+     border-radius:3px;
+     font-weight: lighter;
 
   }
 
@@ -272,7 +275,14 @@ div.visBlock .dynamicBlock{
    }
 
   #vis_5_BarLineChart .clicked-btn{
-      background-color: #A1A1A1;
+      /* background-color: #A1A1A1; */
+      background-color: #FFF9FF;
+      color: black;
+      border: inherit;
+      border-style: solid;
+      border-width: 0.5px;
+      border-color: black;
+      /* stro */
   }
 
 /* Dora's code END */
