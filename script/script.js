@@ -3,7 +3,7 @@ var textPositionBottom_0 = $('#text_0_undernourishment').offset().top + $(window
     textPositionBottom_2 = $('#text_2_GHI').offset().top + $(window).height()/2 + $('#text_2_GHI').children().children().outerHeight(true)/2,
     textPositionBottom_3 = $('#text_3_GHIWorldMap').offset().top + $(window).height()/2 + $('#text_3_GHIWorldMap').children().children().outerHeight(true)/2,
     textPositionBottom_4 = $('#text_4_RadarChart').offset().top + $(window).height()/2 + $('#text_4_RadarChart').children().children().outerHeight(true)/2,
-    // textPositionTop_5 = $('#text_5_economyImpact').offset().top,
+    textPositionBottom_5 = $('#text_5_economyImpact').offset().top + $(window).height()/2 + $('#text_5_economyImpact').children().children().outerHeight(true)/2,
 
     visIds = ["#vis_0_pieChart", "#vis_2_GHIIntro", "#vis_3_GHIMap", "#vis_4_RadarChart", "#vis_5_BarLineChart"];
 
@@ -14,6 +14,9 @@ var currentVisId = visIds[0],
     earlierWindowScrollTop = 0,
     currentStage = 0,
     earlierStage = 0;
+
+var GLOBAL_COUNTRY = 'Djibouti';
+// var GLOBAL_COUNTRY = 'China';
 
 
 
@@ -29,8 +32,10 @@ function checkStageNum(scrollTop){
         return 2;
     } else if (scrollTop >= textPositionBottom_3 && scrollTop < textPositionBottom_4) {
         return 3; //affect "vis_4_RadarChart"
-    } else if (scrollTop >= textPositionBottom_4) {
-        return 4; //affect "vis_4_RadarChart", "vis_5_BarLineChart"
+    } else if (scrollTop >= textPositionBottom_4 && scrollTop < textPositionBottom_5) {
+        return 4; //affect "vis_5_BarLineChart"
+    } else if (scrollTop >= textPositionBottom_5) {
+        return 5; //can select countries
     }
 }
 
@@ -50,18 +55,36 @@ function stageToAction(currentStage, earlierStage){
             break;
 
         case 3:
+            //before, case3 and case4 may go together, but finally it seems fine to not
+                // if(earlierStage == 2){
+                //     earlierVisMove(earlierVisId, direction, 105);
+                //     currentVisMove(currentVisId, direction, 100); //70
+                // } else if (earlierStage == 4) {
+                //     earlierVisMove(earlierVisId, direction, 105);
+                //     currentVisMove(currentVisId, direction, 130);
+                // }
+            earlierVisMove(earlierVisId, direction, 105);
             if(earlierStage == 2){
-                earlierVisMove(earlierVisId, direction, 105);
-                currentVisMove(currentVisId, direction, 100); //70
+                currentVisMove(currentVisId, direction, 98);
             } else if (earlierStage == 4) {
-                earlierVisMove(earlierVisId, direction, 105);
-                currentVisMove(currentVisId, direction, 130);
+                currentVisMove(currentVisId, direction, 102);
             }
             break;
 
         case 4:
-            earlierVisMove(earlierVisId, direction, -1);
-            currentVisMove(currentVisId, direction, 63);
+            //before, case3 and case4 may go together, but finally it seems fine to not
+                // earlierVisMove(earlierVisId, direction, -1);
+                // currentVisMove(currentVisId, direction, 63);
+            if(earlierStage == 3){
+                earlierVisMove(earlierVisId, direction, 105);
+                currentVisMove(currentVisId, direction, 95);
+            }
+            break;
+
+
+        case 5:
+
+            $('.vis_5_finalInteraction').animate({ opacity: 1}, {duration: 600})
 
 
     }

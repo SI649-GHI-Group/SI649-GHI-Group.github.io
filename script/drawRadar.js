@@ -190,7 +190,7 @@ const loadRadarData=(year = 1992)=> {
 
 	  	updateRadarData(results)
 	    drawRadarChart(year,GLOBAL_REGION)
-	    addClickEffect()
+	    addClickEffect(year)
 	    // setTimeout(console.log("draw"),5000);
 	  }
 	)
@@ -221,7 +221,7 @@ const loadYearData=(year,region)=>{
 																							return parseInt(i.key)===year
 																						})[0]
 																						.values.map(d=>{
-																							console.log(d)
+																							// console.log(d)
 																							return d.values[0]
 																						})
 	let reginFocusWeightD=groupedWeightD.filter((d)=>{return d.key===region})[0].values.filter((i)=>{return parseInt(i.key)===year})[0].values.map(d=>d.values[0])
@@ -256,7 +256,7 @@ const loadYearData=(year,region)=>{
 
 	})
 
-	console.log("radardata",radardata)
+	// console.log("radardata",radardata)
 
 	return radardata
 }
@@ -275,11 +275,11 @@ const groupDataByRegin=(inputData)=> {
 }
 
 const drawRadarChart=(yearControl,regionControl)=>{
-	var margin = { top: 20, right: 50, bottom: 20, left: 60 },
+	var margin = { top: 20, right: 50, bottom: 10, left: 70 },
 		width = Math.min(300, window.innerWidth / 40) - margin.left - margin.right,
 		height = Math.min(width, window.innerHeight - margin.top - margin.bottom);
 
-		console.log(yearControl)
+		// console.log(yearControl)
 
 
 
@@ -309,9 +309,15 @@ const drawRadarChart=(yearControl,regionControl)=>{
 	// }
 	data.forEach((d)=>{
 		// console.log("d",d)
+		let classSets = 'single-chart';
+			// console.log(GLOBAL_COUNTRY)
+		if (d.name === GLOBAL_COUNTRY){
+			classSets += ' single-chart-active';
+		}
+
 		let chartnode = document.createElement("DIV")
 		chartnode.setAttribute('id', `chart_${d.code}`)
-		chartnode.setAttribute('class', 'single-chart')
+		chartnode.setAttribute('class', classSets)
 		// console.log("chartnode",chartnode)
 		chartsFrame.appendChild(chartnode)
 		let svg_radar2 = RadarChart(`#chart_${d.code}`, [d], radarChartOptions2);
@@ -319,12 +325,16 @@ const drawRadarChart=(yearControl,regionControl)=>{
 
 
 }
-const addClickEffect=()=>{
+const addClickEffect=(selectedYear)=>{
 	let clickableChart=document.querySelectorAll('.single-chart')
 	clickableChart.forEach((c)=>{
-		c.addEventListener("click",()=>{
+		c.addEventListener("click",function(){
 			clickableChart.forEach((cc)=>{cc.classList.remove("single-chart-active")})
 			c.classList.toggle('single-chart-active')
+
+			let selectedCountryName = this.querySelector('.countryName').innerHTML
+
+			loadLineBarData(selectedYear, selectedCountryName);
 		})
 	})
 }

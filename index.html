@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-	<title>GHI</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>GHI</title>
 
 	<script src="script/jquery.min.js"></script>
     <!-- <script src="script/d3.min.js"></script> -->
@@ -102,7 +104,7 @@
         </div>
 
         <!-- show controls -->
-		<div class="textOrVisBlock" id="text_5_economyImpact">
+		<div class="textOrVisBlock" id="text_6_feelFree">
             <div class="block_verticalAlign">
                 <h2>Feel free to check how helpful economy is</h2>
             </div>
@@ -175,8 +177,47 @@
 
         <!-- BAR-LINE Chart -->
             <div class="textOrVisBlock visBlock" id="vis_5_BarLineChart" >
-                    <!-- <svg></svg> -->
-                    <img src="assets/test_img/5.jpg" alt="test_text5" style="height: 60vh;">
+                <!-- <img src="assets/test_img/5.jpg" alt="test_text5" style="height: 60vh;"> -->
+
+                <div>
+                  <div class="select align-items-center justify-content-center vis_5_finalInteraction">
+                    <select   name="slct" id="mydropdown"  onchange="getValue()">
+                      <option value="1992" >1992</option>
+                      <option value="2000" >2000</option>
+                      <option value="2008" >2008</option>
+                      <option value="2016" >2016</option>
+                      <option value="2017" >2017</option>
+                      <option value="2018" >2018</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Dora's code START -->
+                    <!-- <div class="main"> -->
+                        <div id="bar-and-line-chart"></div>
+                        <div class="legend vis_5_finalInteraction">
+                            <div class="legendButtons">
+                                <div class="legend-left">
+                                    <p>Economy Status Indicator</p>
+                                    <!-- <button class= "econBtn" id='povertyBtn'>Poverty Rate</button> -->
+                                    <button class='gdpBtn'>GDP</button>
+                                </div>
+                                <div class="legend-right">
+                                    <p>GHI Indicators (%)</p>
+                                    <button class= "filterBtn undernourishmentBtn" >Undernourishment</button>
+                                    <button class= "filterBtn stuntingBtn">Stunting</button>
+                                    <button class= "filterBtn wastingBtn" >Wasting</button>
+                                    <button class= "filterBtn mortalityBtn">Mortality</button>
+                                    <!-- <button class= "filterBtn" id='Underweight'>Underweight Rate</button> -->
+                                </div>
+                            </div>
+                            <div class="legendRadioCountries">
+
+                            </div>
+
+                        </div>
+                    <!-- </div> -->
+                <!-- Dora's code END -->
             </div>
 
     </div>
@@ -188,6 +229,7 @@
 
     <script type="text/javascript" src="script/script.js"></script>
     <script type="text/javascript" src="script/drawRadar.js"></script>
+    <script type="text/javascript" src="script/line_bar_script.js"></script>
     <script type="text/javascript" src="script/drawMap.js"></script>
 
 

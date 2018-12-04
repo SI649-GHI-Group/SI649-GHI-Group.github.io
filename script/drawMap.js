@@ -5,6 +5,7 @@ var selectedYear = 1992;
 $(document).ready(function() {
   loadMapData();
   loadRadarData(1992);
+  loadLineBarData(1992);
 
   $("SELECT").change( function () {
                 selectedYear = $(this).val();
@@ -13,6 +14,7 @@ $(document).ready(function() {
                 visulizeMap(filteredItem);
 
                 loadRadarData(parseInt(selectedYear));
+
   });
 
 })
@@ -20,7 +22,7 @@ $(document).ready(function() {
 
 
 function visulizeMap(mydata){
-  var w = 1200;
+  var w = $(window).width();
   var h = $(window).height()*2/3;
 
   var projection = d3.geoEquirectangular()

@@ -332,6 +332,7 @@ const RadarChart = function RadarChart(parent_selector, data, options) {
 		  .data(names)
 		  .enter()
 		  .append("text")
+			.attr('class', 'countryName')
 		  .attr("x", -cfg.w/2)
 			.attr("y", -16)
 		  // .attr("y", (d,i) => i * 20 + 9)

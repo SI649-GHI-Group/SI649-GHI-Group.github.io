@@ -80,7 +80,7 @@ div.visBlock .dynamicBlock{
       z-index: 1;
       stroke: darkgrey;
       stroke-width: 0.2px;
-      fill: black;
+      /* fill: black; */
     }
 
     #mapTooltip {
@@ -188,3 +188,91 @@ div.visBlock .dynamicBlock{
   	transition-duration: 0.2s;
   }
 /* Jane's code END */
+
+
+
+
+
+
+
+/* Dora's code START */
+  .vis_5_finalInteraction{
+    opacity: 0;
+  }
+
+  #vis_5_BarLineChart div.legend{
+      text-align:center;
+      display:flex;
+      justify-content: space-around;
+      margin-top: 3vh;
+      /* opacity: 0; */
+  }
+
+  #vis_5_BarLineChart div.legend-left{
+    display: inline-block;
+    width: 25vw;
+  }
+
+  #vis_5_BarLineChart div.legend-right{
+    display: inline-block;
+    width: 45vw;
+  }
+
+  #vis_5_BarLineChart p{
+      font-size:11px;
+      margin-bottom: 2px;
+  }
+
+  #vis_5_BarLineChart .bar{
+      fill: #1E1E1E;
+  }
+
+  #vis_5_BarLineChart .bar-disappear{
+      display: none
+  }
+
+  #vis_5_BarLineChart .line-disappear{
+      display: none
+  }
+
+  #vis_5_BarLineChart button{
+     width:110px;
+     height: 21px;
+     border: none;
+     font-size: 10px;
+     color: white;
+     text-align: center;
+     text-decoration: none;
+     margin: 4px 2px;
+     cursor: pointer;
+     outline: none;
+     border-radius:3px
+
+  }
+
+  #vis_5_BarLineChart .gdpBtn{
+      background-color: #1E1E1E;
+      cursor: default;
+  }
+
+  #vis_5_BarLineChart .undernourishmentBtn{
+      background-color: #EC654D;
+   }
+
+  #vis_5_BarLineChart .stuntingBtn{
+      background-color: #0bb;
+   }
+
+  #vis_5_BarLineChart .wastingBtn{
+      background-color: #FA9C21;
+   }
+
+  #vis_5_BarLineChart .mortalityBtn{
+      background-color: #3C73B9;
+   }
+
+  #vis_5_BarLineChart .clicked-btn{
+      background-color: #A1A1A1;
+  }
+
+/* Dora's code END */
