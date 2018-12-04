@@ -1,3 +1,8 @@
+:root{
+  --colorWhite: #FFF9FF;
+}
+
+
 body{
   margin:0;
 }
@@ -18,7 +23,7 @@ div.left_text h2{
 }
 
 div.left_text p{
-  color: #FFF9FF;
+  color: var(--colorWhite);
   font-size: 0.7em;
   font-weight: lighter;
 }
@@ -91,10 +96,10 @@ div.visBlock .dynamicBlock{
       text-align: left;
       padding: 12px;
       background-color: black;
-      border: 1px solid #FFF9FF;
+      border: 1px solid var(--colorWhite);
       width: auto;
       opacity: 0;
-      color: #FFF9FF;
+      color: var(--colorWhite);
       position: absolute;
       border-radius: 10px;
       font-weight: lighter;
@@ -242,7 +247,7 @@ div.visBlock .dynamicBlock{
      height: 21px;
      border: none;
      font-size: 10px;
-     color: #FFF9FF;
+     color: var(--colorWhite);
      text-align: center;
      text-decoration: none;
      margin: 4px 2px;
@@ -276,7 +281,7 @@ div.visBlock .dynamicBlock{
 
   #vis_5_BarLineChart .clicked-btn{
       /* background-color: #A1A1A1; */
-      background-color: #FFF9FF;
+      background-color: var(--colorWhite);
       color: black;
       border: inherit;
       border-style: solid;

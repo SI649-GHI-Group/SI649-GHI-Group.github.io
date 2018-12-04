@@ -2,16 +2,21 @@ var filteredItem
 var loadedMapData
 var selectedYear = 1992;
 
+var mapSvg = d3.select('#map')
+              .append('svg');
+var projection = d3.geoEquirectangular();
+
 $(document).ready(function() {
   loadMapData();
   loadRadarData(1992);
   loadLineBarData(1992);
+  setupMap();
 
   $("#mapdropdown").change( function () {
                 selectedYear = $(this).val();
                 console.log(selectedYear);
                 findDataItem(loadedMapData, selectedYear)
-                visulizeMap(filteredItem);
+                visulizeCountryDots(filteredItem);
 
                 loadRadarData(parseInt(selectedYear));
                 drawYearLine(parseInt(selectedYear));
@@ -24,34 +29,34 @@ $(document).ready(function() {
 
 
 
-function visulizeMap(mydata){
+function setupMap(){
   var w = $(window).width();
   var h = $(window).height()*2/3;
 
-  var projection = d3.geoEquirectangular()
 
   var path = d3.geoPath()
     .projection(projection);
 
-  var svg = d3.select('#map')
-    .append('svg')
-    .attr('width', w)
-    .attr('height', h)
+  mapSvg.attr('width', w)
+      .attr('height', h)
 
 
 
-  svg.append('rect')
+  mapSvg.append('rect')
     .attr('width', w)
     .attr('height', h)
     .attr('fill', 'white');
 
-  var g = svg.append("g");
+  var mapG = mapSvg.append('g')
+                    .attr('id', 'mapG');
+
+
 
   d3.json('https://d3js.org/world-50m.v1.json', function(error, data) {
     if (error) console.error(error);
-    g.append('path')
-      .datum(topojson.feature(data, data.objects.countries))
-      .attr('d', path)
+    mapG.append('path')
+        .datum(topojson.feature(data, data.objects.countries))
+        .attr('d', path)
 
 
     // zoom effect
@@ -61,22 +66,28 @@ function visulizeMap(mydata){
     //     g.selectAll("path")
     //       .attr("d", path.projection(projection));
     //   });
-    // svg.call(zoom);
+    // mapSvg.call(zoom);
+  });
+}
 
+
+
+
+function visulizeCountryDots(mydata){
       var locations = mydata
 
       var hue = 0;
 
+      var g = mapSvg.append("g")
+                    .attr("id", "countryDots");
+
       // console.log( locations)
-
-
 
       locations.map(function(d) {
         hue += 0.36
         d.color = "#FFB533"
         // d.color = 'hsl(' + hue + ', 100%, 50%)';
       });
-
 
       g.selectAll('circle')
 
@@ -108,7 +119,6 @@ function visulizeMap(mydata){
           return d.color;
         })
          .style('opacity', 0.6)
-
 
 
 
@@ -152,8 +162,6 @@ function visulizeMap(mydata){
             .duration(100)
             .style('opacity', 0)
         });
-    });
-
 }
 
 
@@ -169,7 +177,7 @@ function loadMapData(){
               if (d.Year==1992) {return d}
         })
 
-        visulizeMap(filteredItem);
+        visulizeCountryDots(filteredItem);
 
     })
 }
@@ -181,9 +189,9 @@ function loadMapData(){
 
 function findDataItem(data, year){
 
-   d3.select("svg")
-
+   d3.select("#countryDots")
     .remove();
+
       filteredItem = data.filter(function (d) {
 
       // console.log(year)
