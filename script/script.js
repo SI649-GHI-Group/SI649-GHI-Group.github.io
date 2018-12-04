@@ -28,7 +28,7 @@ function checkStageNum(scrollTop){
     } else if (scrollTop >= textPositionBottom_2 && scrollTop < textPositionBottom_3) {
         return 2;
     } else if (scrollTop >= textPositionBottom_3 && scrollTop < textPositionBottom_4) {
-        return 3; //affect "vis_4&5", "vis_4_RadarChart"
+        return 3; //affect "vis_4_RadarChart"
     } else if (scrollTop >= textPositionBottom_4) {
         return 4; //affect "vis_4_RadarChart", "vis_5_BarLineChart"
     }
@@ -52,7 +52,7 @@ function stageToAction(currentStage, earlierStage){
         case 3:
             if(earlierStage == 2){
                 earlierVisMove(earlierVisId, direction, 105);
-                currentVisMove(currentVisId, direction, 70);
+                currentVisMove(currentVisId, direction, 100); //70
             } else if (earlierStage == 4) {
                 earlierVisMove(earlierVisId, direction, 105);
                 currentVisMove(currentVisId, direction, 130);

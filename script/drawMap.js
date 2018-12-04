@@ -1,14 +1,18 @@
 var filteredItem
-var loadedData
+var loadedMapData
+var selectedYear = 1992;
 
 $(document).ready(function() {
-  loadData();
+  loadMapData();
+  loadRadarData(1992);
 
   $("SELECT").change( function () {
-                var color = $(this).val();
-                console.log(color);
-                findDataItem(loadedData, color)
+                selectedYear = $(this).val();
+                console.log(selectedYear);
+                findDataItem(loadedMapData, selectedYear)
                 visulizeMap(filteredItem);
+
+                loadRadarData(parseInt(selectedYear));
   });
 
 })
@@ -117,7 +121,7 @@ function visulizeMap(mydata){
           d3.select('#country').text(d.Entity);
           d3.select('#ghi').text(d["Global Hunger Index"]);
 
-          d3.select('#tooltip')
+          d3.select('#mapTooltip')
             .style('left', () => {
               if(d3.event.pageX <= $(window).width() * 9/10){
                 return (d3.select(this).node().cx.baseVal.value + 35) + 'px';
@@ -138,7 +142,7 @@ function visulizeMap(mydata){
             .transition()
             .duration(100)
             .style('fill', d.color);
-          d3.select('#tooltip')
+          d3.select('#mapTooltip')
             .transition()
             .duration(100)
             .style('opacity', 0)
@@ -149,14 +153,14 @@ function visulizeMap(mydata){
 
 
 
-function loadData(){
-    d3.json('assets/data/sample.json', function(error, data) {
+function loadMapData(){
+    d3.json('assets/data/map.json', function(error, data) {
         if (error) console.error(error);
 
-        loadedData = data
-        // console.log(loadedData)
+        loadedMapData = data
+        // console.log(loadedMapData)
 
-        filteredItem = loadedData.filter(function (d) {
+        filteredItem = loadedMapData.filter(function (d) {
               if (d.Year==1992) {return d}
         })
 
