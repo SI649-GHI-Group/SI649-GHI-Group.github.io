@@ -143,6 +143,7 @@ const updateRadarData=(results)=>{
   	groupedWeightD=groupDataByRegin(results[0])
   	groupedWastingD=groupDataByRegin(results[1])
   	groupedMortalityD=groupDataByRegin(results[2])
+		// console.log("groupedMortalityD",groupedMortalityD)
   	groupedUndernourishmentD=groupDataByRegin(results[4])
 }
 

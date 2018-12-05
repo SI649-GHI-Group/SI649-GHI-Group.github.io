@@ -5,7 +5,12 @@ var textPositionBottom_0 = $('#text_0_undernourishment').offset().top + $(window
     textPositionBottom_4 = $('#text_4_RadarChart').offset().top + $(window).height()/2 + $('#text_4_RadarChart').children().children().outerHeight(true)/2,
     textPositionBottom_5 = $('#text_5_economyImpact').offset().top + $(window).height()/2 + $('#text_5_economyImpact').children().children().outerHeight(true)/2,
 
-    visIds = ["#vis_0_pieChart", "#vis_2_GHIIntro", "#vis_3_GHIMap", "#vis_4_RadarChart", "#vis_5_BarLineChart"];
+    visIds = ["#vis_0_pieChart", "#vis_2_GHIIntro", "#vis_3_GHIMap", "#vis_4_RadarChart", "#vis_5_BarLineChart"],
+
+
+    ghi_interpretation_0_start = textPositionBottom_1 + windowH/4,
+    ghi_interpretation_1_ghiAppear = textPositionBottom_1 + windowH/2,
+    ghi_interpretation_2_done = textPositionBottom_1 + windowH* 3/4;
 
 
 var currentVisId = visIds[0],
@@ -18,6 +23,9 @@ var currentVisId = visIds[0],
 var GLOBAL_COUNTRY = 'Djibouti';
 var YEAR = 1992;
 // var GLOBAL_COUNTRY = 'China';
+
+
+
 
 
 
@@ -110,7 +118,8 @@ function currentVisMove(currentVisId, direction, moveDist){
 }
 
 
-$(document).ready()
+// $(document).ready()
+
 
 
 $(window).scroll(function(){
@@ -125,6 +134,101 @@ $(window).scroll(function(){
         // console.log(earlierStage);
         stageToAction(currentStage, earlierStage);
     }
+
+    //scroll-animation to interpret GHI
+    if(currentStage == 1){
+        // first triger, to let "undernourishment" shrink and show "GHI"
+            if (currentWindoeScrollTop >= ghi_interpretation_0_start && currentWindoeScrollTop < ghi_interpretation_1_ghiAppear){
+                if ( !y_un_scale ){
+                    var y_un_scale = d3.scaleLinear()
+                                            .domain([ghi_interpretation_0_start, ghi_interpretation_1_ghiAppear])
+                                            .range([cy0, cy_child_target]);
+                };
+                if ( !y_ghi_scale ){
+                    var y_ghi_scale = d3.scaleLinear()
+                                            .domain([ghi_interpretation_0_start, ghi_interpretation_1_ghiAppear])
+                                            .range([cy0, cy_parent_target]);
+                };
+                if ( !r_un_scale ){
+                    var r_un_scale = d3.scaleLinear()
+                                            .domain([ghi_interpretation_0_start, ghi_interpretation_1_ghiAppear])
+                                            .range([r_parent, r_child]);
+                };
+                if ( !color_un_scale ){
+                    var color_un_scale = d3.scaleLinear()
+                                            .domain([ghi_interpretation_0_start, ghi_interpretation_1_ghiAppear])
+                                            .range([color_ghi, color_undernourishment]);
+                };
+                if ( !font_size_un_scale ){
+                    var font_size_un_scale = d3.scaleLinear()
+                                            .domain([ghi_interpretation_0_start, ghi_interpretation_1_ghiAppear])
+                                            .range([font_size_parent, font_size_child]);
+                };
+
+                cy_ghi = y_ghi_scale(currentWindoeScrollTop);
+                let cy_un = y_un_scale(currentWindoeScrollTop),
+                    r_un = r_un_scale(currentWindoeScrollTop),
+                    color_un = color_un_scale(currentWindoeScrollTop),
+                    font_size_un = font_size_un_scale(currentWindoeScrollTop);
+
+                // these three moce with ghi
+                    drawEntity('Stunting', cx_ghi, cy_ghi, r_child, color_stunting, font_size_child, 'child');
+                    drawEntity('Wasting', cx_ghi, cy_ghi, r_child, color_wasting, font_size_child, 'child');
+                    drawEntity('Motality', cx_ghi, cy_ghi, r_child, color_motality, font_size_child, 'child');
+                // ghi moves
+                    drawEntity('GHI', cx_ghi, cy_ghi, r_parent, color_ghi, font_size_parent, 'parent');
+                // un moves and shrinks and changes color
+                    drawEntity('Undernourishment', cx_ghi, cy_un, r_un, color_un, font_size_un, 'child');
+
+            } else if (currentWindoeScrollTop >= ghi_interpretation_1_ghiAppear && currentWindoeScrollTop < ghi_interpretation_2_done) {
+                if ( !x_un_scale ){
+                    var x_un_scale = d3.scaleLinear()
+                                        .domain([ghi_interpretation_1_ghiAppear, ghi_interpretation_2_done])
+                                        .range([cx_ghi, cx_un_target]);
+                };
+                if ( !x_s_scale ){
+                    var x_s_scale = d3.scaleLinear()
+                                        .domain([ghi_interpretation_1_ghiAppear, ghi_interpretation_2_done])
+                                        .range([cx_ghi, cx_s_target]);
+                };
+                if ( !x_w_scale ){
+                    var x_w_scale = d3.scaleLinear()
+                                        .domain([ghi_interpretation_1_ghiAppear, ghi_interpretation_2_done])
+                                        .range([cx_ghi, cx_w_target]);
+                };
+                if ( !x_m_scale ){
+                    var x_m_scale = d3.scaleLinear()
+                                        .domain([ghi_interpretation_1_ghiAppear, ghi_interpretation_2_done])
+                                        .range([cx_ghi, cx_m_target]);
+                };
+                if ( !y_children_scale ){
+                    var y_children_scale = d3.scaleLinear()
+                                            .domain([ghi_interpretation_1_ghiAppear, ghi_interpretation_2_done])
+                                            .range([cy_ghi, cy_child_target]);
+                };
+
+                let cy_child = y_children_scale(currentWindoeScrollTop),
+                    cx_un = x_un_scale(currentWindoeScrollTop),
+                    cx_s = x_s_scale(currentWindoeScrollTop),
+                    cx_w = x_w_scale(currentWindoeScrollTop),
+                    cx_m = x_m_scale(currentWindoeScrollTop);
+
+                // these three move x&y
+                    drawEntity('Stunting', cx_s, cy_child, r_child, color_stunting, font_size_child, 'child');
+                    drawEntity('Wasting', cx_w, cy_child, r_child, color_wasting, font_size_child, 'child');
+                    drawEntity('Motality', cx_m, cy_child, r_child, color_motality, font_size_child, 'child');
+                // un moves x
+                    drawEntity('Undernourishment', cx_un, cy_child_target, r_child, color_undernourishment, font_size_child, 'child');
+                // ghi stays
+                    drawEntity('GHI', cx_ghi, cy_ghi, r_parent, color_ghi, font_size_parent, 'parent');
+
+            }
+    }
+
+    // console.log(currentStage)
+    // console.log(currentWindoeScrollTop)
+    // console.log(textPositionBottom_1 )
+    // console.log(windowH)
 
 
     //for next iteration
