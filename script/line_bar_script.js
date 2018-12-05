@@ -18,7 +18,7 @@ let gdpData=[]
 // let SAsiaCountries=["Afghanistan","Bangladesh","Bhutan","India","Maldives","Nepal","Pakistan","Sri Lanka"]
 
 var margin = { top: 70, right: 50, bottom: 35, left: 35 },
-    width =  $(window).width() * 0.75- margin.left - margin.right,
+    width =  $(window).width() * 0.72- margin.left - margin.right,
     height = $(window).height() * 0.6 - margin.top - margin.bottom;
 
 var svg = d3.select("#bar-and-line-chart")

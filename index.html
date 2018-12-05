@@ -34,9 +34,10 @@
 		<!-- show pie chart  -->
         <div class="textOrVisBlock" id="text_0_undernourishment">
             <div class="block_verticalAlign">
-                <h2>Is Undernourishment still a problem?</h2>
+                <h2>Is Undernourishment still a problem?</h2><br />
     			<p>
-    				undernourishment is something...
+    				IT IS.<br /><br />
+                    Even today, there are still 10% of human-beings live without sufficient nutrients supply.
     			</p>
             </div>
         </div>
@@ -45,7 +46,7 @@
 		<div class="textOrVisBlock" id="text_1_undernourishmentToGHI">
             <div class="block_verticalAlign">
                 <p>
-                    BUT, undernourishment is merely one factor of Global Hunger Index (aka GHI).
+                    South Asia, Sub-Saharan Africa, and East Asia & Pacific countries have the highest undernourishment rate among their populations.
                 </p>
             </div>
         </div>
@@ -53,23 +54,43 @@
 		<!-- show GHI diagram -->
         <div class="textOrVisBlock" id="text_2_GHI">
             <div class="block_verticalAlign">
-                <h2>What is GHI?</h2>
+                <h2>GHI</h2><br />
     			<p>
-    				The value of GHI is based on 4 factors, including Undernourishment, Children Stunting Rate, Children Wasting Rate, Children Motality Rate.<br />
-    				<!-- <ul>
-    					<li>
-    						Undernourishment:
-    					</li>
-    					<li>
-    						Children Stunting Rate:
-    					</li>
-    					<li>
-    						Children Wasting Rate:
-    					</li>
-    					<li>
-    						Children Motality Rate:
-    					</li>
-    				</ul> -->
+    				To better understand the situation of people suffering from hunger, we have a indicator called <strong>Global Hunger Index</strong>, aka <strong>GHI</strong><br /><br />
+                    The value of GHI is based on 4 factors, including:<br />
+                </p>
+
+                    <ul>
+                        <li>
+                            <p>
+                                Undernourishment
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Stunting Rate (<= 5 y)
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Wasting Rate (<= 5y)
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Motality Rate (<= 5y)
+                            </p>
+                        </li>
+                    </ul>
+
+                <p style="font-size: 0.7em">
+
+                        Stunting is being "too short for one’s age",<br /><br />
+                        Wasting is being "dangerously thin for one’s height"
+
+                </p>
+
+
     			</p>
             </div>
         </div>
@@ -77,9 +98,12 @@
 		<!-- show world map -->
         <div class="textOrVisBlock" id="text_3_GHIWorldMap">
             <div class="block_verticalAlign">
-                <h2>How is GHI distributed?</h2>
+                <h2>How is GHI distributed?</h2><br />
     			<p>
-    				Let's see how GHI value is distributed worldwide.
+    				Let's see how GHI value is distributed worldwide.<br /><br />
+                    South Asia, East Asia & Pacific and Sub-Suharan Africa still have the highest GHI values, but some Central American countries are also among
+                    the higest.<br /><br />
+                    But it's reliefing that the GHI is decreased through time around the world.
     			</p>
             </div>
         </div>
@@ -87,9 +111,11 @@
 		<!-- only show radarchar -->
         <div class="textOrVisBlock" id="text_4_RadarChart">
             <div class="block_verticalAlign">
-                <h2>What does high GHI mean?</h2>
+                <h2>What does high GHI mean?</h2><br />
     			<p>
-    				Selecting the countries with relatively high GHI values, we dig deeper into how they perform in terms of each factor of GHI.
+    				To zoom in the detail of what it's like for high-GHI countries in terms of all the detailed factors, we have selected 12
+                    Sub-Saharan African countries to show their detailed factor distributions.<br /><br />
+                    These are the data for <span id="selectedYearForRadar"></span>.
     			</p>
             </div>
         </div>
@@ -97,9 +123,14 @@
 		<!-- show bar-line chart as well -->
 		<div class="textOrVisBlock" id="text_5_economyImpact">
             <div class="block_verticalAlign">
-                <h2>Does Economy Improvement help?</h2>
+                <h2>Does Economy Improvement help?</h2><br />
     			<p>
-    				Generally, developemnt of economy would result in lower GHI, however, outliers that live outside this "common sense" exist.
+    				Generally, developemnt of economy would result in lower GHI in all aspects, however, outliers that live outside this "common sense" exist, which indicate
+                    that the situation might be much more complicated.<br /><br />
+
+                    For example, a country listed above named "Djibouti" has incresed its DGP rapidly for the recent 20 years,
+                    although the Undernourishment rate (for all population) has dropped significantly, its Stunting and Wasting rates (only for children under 5) remain high and are event
+                    going upwards.
     			</p>
             </div>
         </div>
@@ -107,7 +138,11 @@
         <!-- show controls -->
 		<div class="textOrVisBlock" id="text_6_feelFree">
             <div class="block_verticalAlign">
-                <h2>Feel free to check how helpful economy is</h2>
+                <h2>Explore Worldwide <br />GDP-GHI Correlation</h2><br />
+                <p>
+                    Here you can check over 100 countries or regions around the world to check how strong the pattern of GDP-GHI correlation is, how
+                    common outliers exist, who are they, and feel free to dig deeper from here.
+                </p>
             </div>
         </div>
 
@@ -126,7 +161,7 @@
                     <!-- Xiaochuan's code START-->
                         <div id="first" class="pieChart">
                             <!-- <p style="margin: 2% 0 0 9%; font-family:Helvetica; color:#F7464A"> Hover to see the value</p> -->
-                            <div id="canvas-holder" style="margin: 0 0 200px 10vw">
+                            <div id="canvas-holder" style="margin: 0 0 200px 7vw">
 
                                 <canvas id="chart-area" width= "800" height="600"/>
                             </div>
@@ -134,7 +169,7 @@
 
                         <div id="second" class="pieChart" >
                             <!--  <p style="margin: 2% 0 0 9%; font-family:Helvetica; color:#F7464A"> Hover to see the value</p> -->
-                            <div id="canvas-holder1" style="margin: 0 0 200px 10vw">
+                            <div id="canvas-holder1" style="margin: 0 0 200px 7vw">
                                 <canvas id="chart-area1" width= "800" height="600"/>
                             </div>
                         </div>

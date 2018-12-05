@@ -7,7 +7,7 @@ var ghiIntroSvg = d3.select('#GHIIntroSvg')
                     .attr('height', windowH);
 
 
-var cx0 = windowW/2 - 150,
+var cx0 = windowW/2 - 180,
     cy0 = windowH/2 - 50,
     r_parent = 150,
     r_child = 75,
@@ -98,7 +98,7 @@ function drawEntity(name, x, y, r, color, font_size, parentOrChild){
 var cy_child_target = windowH * 3/4,
     cy_parent_target = windowH * 3/8,
 
-    cx_un_target = windowW * 7/48,
-    cx_s_target = windowW * 15/48,
-    cx_w_target = windowW * 23/48,
-    cx_m_target = windowW * 31/48;
+    cx_un_target = windowW * 6/48,
+    cx_s_target = windowW * 14/48,
+    cx_w_target = windowW * 22/48,
+    cx_m_target = windowW * 30/48;

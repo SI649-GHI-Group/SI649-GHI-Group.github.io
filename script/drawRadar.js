@@ -276,7 +276,7 @@ const groupDataByRegin=(inputData)=> {
 }
 
 const drawRadarChart=(yearControl,regionControl)=>{
-	var margin = { top: 20, right: 50, bottom: 10, left: 70 },
+	var margin = { top: 20, right: 50, bottom: 10, left: 60 },
 		width = Math.min(300, window.innerWidth / 40) - margin.left - margin.right,
 		height = Math.min(width, window.innerHeight - margin.top - margin.bottom);
 

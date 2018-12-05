@@ -12,6 +12,8 @@ $(document).ready(function() {
   loadLineBarData(1992);
   setupMap();
 
+  $('#selectedYearForRadar').text(YEAR);
+
   $("#mapdropdown").change( function () {
                 selectedYear = $(this).val();
                 console.log(selectedYear);
@@ -22,6 +24,8 @@ $(document).ready(function() {
                 drawYearLine(parseInt(selectedYear));
 
                 YEAR = selectedYear;
+
+                $('#selectedYearForRadar').text(YEAR);
 
   });
 
