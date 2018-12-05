@@ -2,6 +2,10 @@
   --colorWhite: #FFF9FF;
 }
 
+h2, p{
+  font-family: Lato;
+}
+
 
 body{
   margin:0;

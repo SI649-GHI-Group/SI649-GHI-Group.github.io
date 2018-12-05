@@ -32,7 +32,7 @@ var svg = d3.select("#bar-and-line-chart")
 $(document).ready(function () {
     //150 countries
         d3.csv(`assets/data/Undernourishment.csv`, function(d) {
-            buildFinalFilter(d);
+            buildFinalFilter(d, GLOBAL_COUNTRY);
         })
 
     //169 countries
@@ -364,8 +364,15 @@ const drawYearLine = (year) =>{
         .style('stroke-dasharray','3 2')
 }
 
-const buildFinalFilter= (data) => {
+const buildFinalFilter= (data, country) => {
     var finalDropdown = document.querySelector("#myFinaldropdown");
+
+
+    console.log(finalDropdown.children)
+    while(finalDropdown.firstChild){
+        finalDropdown.removeChild(finalDropdown.firstChild);
+    }
+
 
     let countryName=[];
 
@@ -380,7 +387,7 @@ const buildFinalFilter= (data) => {
         countryOption.innerHTML = cty;
         countryOption.setAttribute("value", cty);
 
-        if(cty === GLOBAL_COUNTRY){
+        if(cty === country){
             countryOption.setAttribute("selected", "selected")
         }
 

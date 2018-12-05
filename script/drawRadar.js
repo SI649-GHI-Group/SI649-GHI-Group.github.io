@@ -333,7 +333,11 @@ const addClickEffect=(selectedYear)=>{
 			clickableChart.forEach((cc)=>{cc.classList.remove("single-chart-active")})
 			c.classList.toggle('single-chart-active')
 
-			let selectedCountryName = this.querySelector('.countryName').innerHTML
+			let selectedCountryName = this.querySelector('.countryName').innerHTML;
+
+			d3.csv(`assets/data/Undernourishment.csv`, function(d) {
+	            buildFinalFilter(d, selectedCountryName);
+	        });
 
 			loadLineBarData(selectedYear, selectedCountryName);
 		})
