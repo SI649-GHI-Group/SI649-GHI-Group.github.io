@@ -291,3 +291,36 @@ div.visBlock .dynamicBlock{
   }
 
 /* Dora's code END */
+
+
+
+/* Xiaochuan's code START */
+  div.pieChart{
+    position: absolute !important;
+    display: flex;
+    top: 10vh;
+  }
+
+  div.pieChart#second{
+    top: 14vh !important;
+    opacity: 0;
+  }
+
+  #second canvas {
+     background-image: url("../assets/img/bowl.png");
+      background-size: cover;
+      /* height: 400px; */
+  }
+  /* @keyframes zoomin {
+      0% {
+          transform: scale(1,1) translateY(0) translateX(0);
+      }
+      100% {
+          transform: scale(2.2,2.2) translateY(-25%) translateX(-8%);
+      }
+  } */
+
+  #chart-area1 {
+      animation:  zoomin 1s forwards;
+  }
+/* Xiaochuan's code END */

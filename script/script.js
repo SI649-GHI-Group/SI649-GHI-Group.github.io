@@ -135,6 +135,68 @@ $(window).scroll(function(){
         stageToAction(currentStage, earlierStage);
     }
 
+    //scroll to change pieChart
+    if(currentStage == 0){
+        if(currentWindoeScrollTop > windowH/2){
+            $('#first').animate({ opacity: 0}, {duration: 600})
+            $('#second').animate({ opacity: 1}, {duration: 1200})
+            // //start to build #second
+            // var config1 = {
+            //     type: 'doughnut',
+            //     data: {
+            //         datasets: [{
+            //             data: [
+            //                 2.59,
+            //                 0.42,
+            //                 0.69,
+            //                 0.69,
+            //                 0.17,
+            //                 3.52,
+            //                 2.72,
+            //                 89.2,
+            //             ],
+            //                 backgroundColor: [
+            //                 "#ff4d4d",
+            //                 "#ffcccc",
+            //                 "#ffb3b3",
+            //                 "#ffb3b3",
+            //                 "ffe6e6",
+            //                 "#cc0000",
+            //                 "#ff3333",
+            //
+            //             ],
+            //
+            //             borderWidth: 0.2,
+            //         }],
+            //         labels: [
+            //             "East Asia & Pacific",
+            //             "Europe & Central Asia",
+            //              "Latin America & Caribbean",
+            //             "Middle East & North Africa",
+            //              "North America",
+            //             "South Asia",
+            //             "Sub-Saharan Africa"
+            //
+            //         ],
+            //     },
+            //     options: {
+            //         responsive: true,
+            //         rotation: 2.2 * Math.PI,
+            //         animation:{
+            //         animateRotate: false},
+            //         legend:{
+            //             display:false},
+            //         tooltips:{
+            //             yAlign: 'bottom'}
+            //     }
+            // };
+            //
+            // var ctx1 = document.getElementById("chart-area1").getContext("2d");
+            // var myDoughnut1 = new Chart(ctx1, config1);
+
+        }
+    }
+
     //scroll-animation to interpret GHI
     if(currentStage == 1){
         // first triger, to let "undernourishment" shrink and show "GHI"
@@ -225,10 +287,6 @@ $(window).scroll(function(){
             }
     }
 
-    // console.log(currentStage)
-    // console.log(currentWindoeScrollTop)
-    // console.log(textPositionBottom_1 )
-    // console.log(windowH)
 
 
     //for next iteration

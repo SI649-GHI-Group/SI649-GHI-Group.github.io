@@ -86,6 +86,7 @@ function visulizeCountryDots(mydata){
       locations.map(function(d) {
         hue += 0.36
         d.color = "#FFB533"
+        // d.color = "#E7540D"
         // d.color = 'hsl(' + hue + ', 100%, 50%)';
       });
 

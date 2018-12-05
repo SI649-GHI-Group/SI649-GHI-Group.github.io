@@ -14,7 +14,7 @@ var cx0 = windowW/2 - 150,
     font_size_parent = 28,
     font_size_child = 14,
 
-    color_ghi = 'red',
+    color_ghi = '#FFB533',
     color_undernourishment = '#EC654D',
     color_stunting = '#0bb',
     color_wasting = '#FA9C21',
