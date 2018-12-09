@@ -14,20 +14,75 @@ $(document).ready(function() {
 
   $('#selectedYearForRadar').text(YEAR);
 
-  $("#mapdropdown").change( function () {
-                selectedYear = $(this).val();
-                console.log(selectedYear);
-                findDataItem(loadedMapData, selectedYear)
-                visulizeCountryDots(filteredItem);
+  // $("#mapdropdown").change( function () {
+  //               selectedYear = $(this).val();
+  //               console.log(selectedYear);
+  //               findDataItem(loadedMapData, selectedYear)
+  //               visulizeCountryDots(filteredItem);
+  //
+  //               loadRadarData(parseInt(selectedYear));
+  //               drawYearLine(parseInt(selectedYear));
+  //
+  //               YEAR = selectedYear;
+  //
+  //               $('#selectedYearForRadar').text(YEAR);
+  //
+  // });
 
-                loadRadarData(parseInt(selectedYear));
-                drawYearLine(parseInt(selectedYear));
 
-                YEAR = selectedYear;
+  //slider
 
-                $('#selectedYearForRadar').text(YEAR);
+  var yearsWithData = [1992, 2000, 2008, 2016, 2017, 2018];
 
-  });
+
+  var mapYearSlider = d3.sliderHorizontal()
+                        .min(d3.min(yearsWithData))
+                        .max(d3.max(yearsWithData))
+                        .width(450)
+                        // .tickFormat(d3.format('.2%'))
+                        .marks(yearsWithData)
+                        // .ticks(5)
+                        // .default(1992)
+                        .on('onchange', val => {
+                            d3.select("p#mapYeatValue").text(val);
+
+                            selectedYear = val;
+                            // console.log(selectedYear);
+                            findDataItem(loadedMapData, selectedYear)
+                            visulizeCountryDots(filteredItem);
+
+                            loadRadarData(parseInt(selectedYear));
+                            drawYearLine(parseInt(selectedYear));
+
+                            YEAR = selectedYear;
+
+                            $('#selectedYearForRadar').text(YEAR);
+                        });
+
+  // var handle = mapYearSlider.insert("circle", ".track-overlay")
+  //     // .attr("class", "handle")
+  //     .attr("r", 9);
+
+
+  var mapYearSliderGroup = d3.select("div#mapYearSlider").append("svg")
+                                .attr("width", 500)
+                                .attr("height", 60)
+                                .append("g")
+                                .attr("transform", "translate(30,30)");
+
+  console.log(mapYearSliderGroup)
+
+
+  mapYearSliderGroup.call(mapYearSlider);
+
+  d3.select('.parameter-value')
+    .append('circle')
+    .attr('r', 8)
+    .style('opacity', 0.95)
+    .style('fill', '#FEC061');
+
+  d3.select("p#mapYeatValue").text(mapYearSlider.value())
+
 
 })
 

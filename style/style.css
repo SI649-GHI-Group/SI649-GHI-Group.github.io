@@ -348,3 +348,50 @@ div.visBlock .dynamicBlock{
       animation:  zoomin 1s forwards;
   }
 /* Xiaochuan's code END */
+
+
+
+
+/* for sliders */
+.parameter-value text{
+  display: none;
+}
+
+.axis{
+  display: none;
+}
+
+
+
+div#sliderElement{
+  margin-bottom: 7vh;
+}
+
+
+line.track{
+  stroke: #2C3E4F;
+  stroke-width: 5px;
+}
+
+line.track-inset{
+  stroke: #5F7994;
+  /* stroke: orange; */
+  stroke-width: 4px;
+}
+
+g.parameter-value path{
+  fill: #FEC061;
+  opacity: 0.95;
+  display: none;
+}
+
+
+p#mapYeatValue{
+  font-size: 0.9em;
+}
+
+
+
+.mapSelectedYear{
+  color: #f39c12;
+}

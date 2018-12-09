@@ -368,7 +368,7 @@ const buildFinalFilter= (data, country) => {
     var finalDropdown = document.querySelector("#myFinaldropdown");
 
 
-    console.log(finalDropdown.children)
+    // console.log(finalDropdown.children)
     while(finalDropdown.firstChild){
         finalDropdown.removeChild(finalDropdown.firstChild);
     }
